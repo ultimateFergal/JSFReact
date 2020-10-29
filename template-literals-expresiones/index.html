@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Literals - Expresiones</title>
+</head>
+<body>
+    <script>
+        const name = 'fergalus'
+        console.log(`The name is ${name}`)
+        console.log(`The name is ${29}`)
+        console.log(`The name is ${'random tests'}`)
+        console.log(`The name is ${x = 'fergal'}`)
+        console.log(`The name is ${(function name() { return 'Fer'})()}`)
+        console.log(`The name is ${(function () { return 'Fern'})()}`)
+        console.log(`The name is ${( () => { return 'Fer arrow'})()}`)
+        console.log(`The name is ${true && 'Fer Ternary'}`)
+        console.log(`The name is ${false ? 'Fer true' : 'Fer False'}`)
+        console.log(`The name is ${['a', 'b'].map( (letter) => `${letter}-styled`)}`)
+    </script>
+</body>
+</html>
