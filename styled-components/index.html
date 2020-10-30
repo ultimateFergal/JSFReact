@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        function component(strings, ...dynamicValues) {
+            return function (props) {
+                console.log(strings)
+                let newContent = strings.slice()
+                console.log(newContent)
+                dynamicValues.forEach((value, index) => {
+                    newContent[index] += props[value] // 'ola'
+                })
+                return newContent.join('')
+                // return 'valor'
+            }
+        }
+
+        const styled = {
+            h1: function(styles) {
+                return function(content) {
+                    return `
+                        <h1 style="${styles}">
+                            ${content}
+                        </h1>
+                    `
+                }
+            },
+            h2: '',
+            div: '',
+        }
+
+        const TitleStyled = styled.h1`
+            color: red;
+            font-family: system-ui;
+            color: orange;
+            font-size: 50px;
+            text-shadow: 2px 2px 0 black;
+            line-height: 100vh;
+        `
+
+        const props = {
+            message: `Don't give up`,
+            name: 'Fergal',
+        }
+
+
+        const user = component`------ ${'message'} ----- ${'name'}`(props)
+        // const Title = component`------ ${'message'} ----- ${'name'}`(props)
+        const Title = component`<marquee>${'message'} </marquee>`(props)
+
+        function render(component, container) {
+            container.innerHTML = component
+        }
+
+        render(TitleStyled(Title), window.container)
+        // render(user, window.container)
+        // render('hello world!', window.container)
+    </script>
+    
+</body>
+</html>
