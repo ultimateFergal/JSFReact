@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const createStore = (reducer, initialState) => {
+            let state = initialState
+            let update = () => {}
+
+            const getState = () => state // Devolver estado actual de la aplicación
+
+            const dispatch = (action) => { //Para invocar cambios dentro del estado, modificación del estado por las acciones despachadas con dispatch
+                state = reducer(state, action)
+                updater()
+            }
+            const subscribe = (listener) => {
+                updater = listener
+            }
+            return {
+                getState,
+                dispatch,
+                subscribe
+            }
+        }
+
+        const reducer = (state, action) => {
+            return action
+        }
+        const store = createStore(reducer, 'estado inicial de la aplicación')
+        // store.dispatch()
+        // store.getState()
+        // store.subscribe()
+
+        store.subscribe(() => {
+            console.log('ha cambiado algo en el store', store.getState())
+        })
+
+        store.dispatch('voy a cambiar algo')
+    </script>
+</body>
+</html>
