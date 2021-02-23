@@ -37,7 +37,7 @@
     }
     // function makeIcecream(flavor1 = isRequired('flavor1'), flavor2 = isRequired('flavor2')) {
     // function makeIcecream(flavors) {
-    function makeIcecream([flavor1 = isRequired('flavor1'), flavor2 = isRequired('flavor2'), ...otherFlavors]) {
+    function makeIcecream([flavor1 = isRequired('flavor1'), flavor2 = isRequired('flavor2'), ...otherFlavors]) { // rest operator, puts element as the remaining parameters
         // console.log(flavors.map)
         // const toppings = flavors.map((f) => f.dataset.flavor)
         const toppings = otherFlavors.map((f) => f.dataset.flavor)
@@ -48,7 +48,7 @@
         const $flavors = document.querySelectorAll('.flavor.is-active')// nodeList
         console.log($flavors, 'btn')
         try {            
-            makeIcecream([...$flavors])
+            makeIcecream([...$flavors]) // spread operator, creates a new object with every element from an array or object. build an array from a node list with spread
         } catch (error) {
             alert(`Aún no completas los sabores para preparar tu helado`)
         }

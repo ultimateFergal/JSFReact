@@ -48,11 +48,11 @@
 <script>
     const price = 2700
     const macbook = {
-        price,
-        set offer(offer) {
+        price, // shorthand property name
+        set offer(offer) { // javascript accessor method
             this.price -= offer
         },
-        get finalPrice() {
+        get finalPrice() { // javascript mutator method
             return this.price * 1.16
         },
         getPrice() {
@@ -81,12 +81,12 @@
 
     window['final-price'].textContent = macbook.finalPrice
 
-    const makeAnOffer = macbook.discount(15)
+    const makeAnOffer = macbook.discount(15) // implementing generator
 
     window['make-offer'].addEventListener('click', () => {
         // console.log(makeAnOffer)
         // console.log(makeAnOffer.next())
-        window['final-price'].textContent = makeAnOffer.next().value
+        window['final-price'].textContent = makeAnOffer.next().value // activates generator
     })
 </script>
 

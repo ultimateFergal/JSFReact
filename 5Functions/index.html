@@ -7,6 +7,8 @@
 </head>
 <body>
     <script>
+        // hoisting wont work in arrow function, const, let
+        // arrow functions dont have 'this'
         function time() {
             this.seg = 0
             setInterval( function () {

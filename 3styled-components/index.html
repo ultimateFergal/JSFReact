@@ -10,19 +10,17 @@
     <script>
         function component(strings, ...dynamicValues) {
             return function (props) {
-                console.log(strings)
-                let newContent = strings.slice()
-                console.log(newContent)
+                let newContent = strings.slice() // generates a copy of strings
                 dynamicValues.forEach((value, index) => {
-                    newContent[index] += props[value] // 'ola'
+                    newContent[index] += props[value] // 'ola' // props.message, props.name
                 })
-                return newContent.join('')
+                return newContent.join('') // turns array into a string
                 // return 'valor'
             }
         }
 
         const styled = {
-            h1: function(styles) {
+            h1: function(styles) { // css styles as arguments in TitleStyled
                 return function(content) {
                     return `
                         <h1 style="${styles}">
@@ -35,6 +33,7 @@
             div: '',
         }
 
+        // The styled component, content inside backtips is the arguments of the fn
         const TitleStyled = styled.h1`
             color: red;
             font-family: system-ui;
@@ -50,15 +49,15 @@
         }
 
 
-        const user = component`------ ${'message'} ----- ${'name'}`(props)
+        const user = component`------ ${'message'} ----- ${'name'}`(props) // props.name, props.message
         // const Title = component`------ ${'message'} ----- ${'name'}`(props)
-        const Title = component`<marquee>${'message'} </marquee>`(props)
+        const Title = component`<marquee>${'message'} </marquee>`(props) // props.name, props.message
 
         function render(component, container) {
             container.innerHTML = component
         }
 
-        render(TitleStyled(Title), window.container)
+        render(TitleStyled(Title), window.container) // Title is the content argument for the return fn in styled.h1 fn 
         // render(user, window.container)
         // render('hello world!', window.container)
     </script>

@@ -1,32 +1,5 @@
-const createStore = (reducer, initialState) => {
-    let state = initialState
-    let update = () => {}
-
-    const getState = () => state // Devolver estado actual de la aplicación
-
-    const dispatch = (action) => { //Para invocar cambios dentro del estado, modificación del estado por las acciones despachadas con dispatch
-        state = reducer(state, action)
-        updater()
-    }
-    const subscribe = (listener) => {
-        updater = listener
-    }
-    return {
-        getState,
-        dispatch,
-        subscribe
-    }
-}
-
-const reducer = (state, action) => {
-    switch(action.type) {
-        case 'BURN':
-            return state + 1.42
-        default:
-            return state
-    }
-}
-const store = createStore(reducer, 0)
+import store from './store.js'
+import { BURN } from './actions/index.js'
 // store.dispatch()
 // store.getState()
 // store.subscribe()
@@ -41,7 +14,7 @@ store.dispatch('voy a cambiar algo')
 const burn = () => {
     console.log('quemando calorías')
     store.dispatch({
-        type: 'BURN',
+        type: BURN,
         payload: 1.42,
     })
 }

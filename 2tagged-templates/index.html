@@ -30,20 +30,20 @@
     <!-- <p>Hard work surpasses natural talent</p> -->
     <script>
 
-        function taggedTemplateD(strings, ...dynamicValues) {
+        function taggedTemplateD(strings, ...dynamicValues) { // elements in strings with spaces, last element empty space, //dynamicValues is rest operator
             console.log(strings, dynamicValues)
             let newContent = ''
             strings.forEach((string, index) => {
                 const strong = dynamicValues[index] ? `<strong>${dynamicValues[index]}</strong>` : ``
-                // console.log(dynamicValues[index])
-                // console.log(string)
+                console.log(dynamicValues[index])
+                console.log(string)
                 // newContent = newContent + string + strong
                 newContent += `${string} ${strong}`
             });
             // console.log(newContent)
             return `<p>${newContent}</P>`
         }
-        const message = taggedTemplateD`${'Hard work'} surpasses ${'natural talent'}`
+        const message = taggedTemplateD`${'Hard work'} surpasses ${'natural talent'}` // The actual tagged templat ES6
         
         document.body.innerHTML = message
 

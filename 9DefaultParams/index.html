@@ -24,12 +24,12 @@
 
 
   <script>
-    const $flavors = document.querySelectorAll('.flavor')
+    const $flavors = document.querySelectorAll('.flavor') // $ grupo de elementos html
 
-    console.log($flavors) // Nodelist
+    console.log($flavors) // Nodelist, these are not arrays
     $flavors.forEach(($el) => $el.addEventListener('click', selectFlavor))
     function selectFlavor() {
-        this.classList.toggle('is-active')
+        this.classList.toggle('is-active') // 'this' aims or reference to element classList from $flavors
     }
 
     function isRequired(param) {

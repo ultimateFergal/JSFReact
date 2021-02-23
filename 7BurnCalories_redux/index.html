@@ -46,6 +46,60 @@
   </main>
 
   <script>
+const getBooks = () => {
+  return new Promise((resolve) => {
+    resolve([
+      {
+        bookId: 1,
+        author: "bob"
+      },
+      {
+        bookId: 2,
+        author: "sally"
+      }
+    ]);
+  });
+};
+
+const getTitle = (bookId) => {
+  return new Promise((resolve, reject) => {
+    switch (bookId) {
+      case 1:
+        resolve({ title: "Greeting the World" });
+        break;
+      case 2:
+        resolve({ title: "Hello World!" });
+        break;
+      default:
+        reject(new Error("404 - book not found"));
+    }
+  });
+};
+
+var result = {}
+let books= []
+let titles= []
+
+getBooks().then((resp) => {
+  resp.forEach(element => {
+    books.push(element.author)
+  });
+  books.forEach((item, index) => {
+    getTitle(index+1).then((item) => {
+      titles.push(item.title)
+    })
+  });
+  var outcome = {
+    authors: books,
+    titles: titles
+  }
+
+  console.log(outcome)
+})
+
+
+
+
         const createStore = (reducer, initialState) => {
             let state = initialState
             let update = () => {}
@@ -94,6 +148,9 @@
             })
         }
         window.burn.addEventListener('click', burn)
+
+
+
   </script>
 </body>
 
