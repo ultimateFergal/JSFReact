@@ -19,3 +19,4 @@ const burn = () => {
     })
 }
 window.burn.addEventListener('click', burn)
+

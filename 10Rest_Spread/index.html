@@ -24,12 +24,12 @@
 
 
   <script>
-    const $flavors = document.querySelectorAll('.flavor')
+    const $flavors = document.querySelectorAll('.flavor')// $ grupo de elementos html
 
-    console.log($flavors) // Nodelist
+    console.log($flavors) // Nodelist, these are not arrays
     $flavors.forEach(($el) => $el.addEventListener('click', selectFlavor))
     function selectFlavor() {
-        this.classList.toggle('is-active')
+        this.classList.toggle('is-active')// 'this' aims or reference to element classList from $flavors
     }
 
     function isRequired(param) {
@@ -37,7 +37,7 @@
     }
     // function makeIcecream(flavor1 = isRequired('flavor1'), flavor2 = isRequired('flavor2')) {
     // function makeIcecream(flavors) {
-    function makeIcecream([flavor1 = isRequired('flavor1'), flavor2 = isRequired('flavor2'), ...otherFlavors]) { // rest operator, puts element as the remaining parameters
+    function makeIcecream([flavor1 = isRequired('flavor1'), flavor2 = isRequired('flavor2'), ...otherFlavors]) { // rest operator, puts element as the remaining parameters, resestructuración de arrays
         // console.log(flavors.map)
         // const toppings = flavors.map((f) => f.dataset.flavor)
         const toppings = otherFlavors.map((f) => f.dataset.flavor)
